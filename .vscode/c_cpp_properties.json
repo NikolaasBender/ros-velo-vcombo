@@ -1,0 +1,39 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/nickbender/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/nickbender/catkin_ws/src/marble_base_station/test_mapping_server/cbor/include/**",
+        "/home/nickbender/catkin_ws/src/m-loam/ceres-solver/include/**",
+        "/home/nickbender/catkin_ws/src/fast_gicp/include/**",
+        "/home/nickbender/catkin_ws/src/hdl_graph_slam/include/**",
+        "/home/nickbender/catkin_ws/src/marble_base_station/test_mapping_server/json/include/**",
+        "/home/nickbender/catkin_ws/src/lucid_helios_ros/include/**",
+        "/home/nickbender/catkin_ws/src/marble_common/marble_common/include/**",
+        "/home/nickbender/catkin_ws/src/marble_base_station/marble_gui/include/**",
+        "/home/nickbender/catkin_ws/src/marble_localization/include/**",
+        "/home/nickbender/catkin_ws/src/marble_base_station/marble_mapping/include/**",
+        "/home/nickbender/catkin_ws/src/m-loam/mloam_common/libs/include/**",
+        "/home/nickbender/catkin_ws/src/m-loam/mloam_loop/include/**",
+        "/home/nickbender/catkin_ws/src/m-loam/mloam_pcl/include/**",
+        "/home/nickbender/catkin_ws/src/ndt_omp/include/**",
+        "/home/nickbender/catkin_ws/src/octomap_msgs/include/**",
+        "/home/nickbender/catkin_ws/src/octomap_ros/include/**",
+        "/home/nickbender/catkin_ws/src/octomap_rviz_plugins/include/**",
+        "/home/nickbender/catkin_ws/src/rtsp_recorder/include/**",
+        "/home/nickbender/catkin_ws/src/smartbase_radar/include/**",
+        "/home/nickbender/catkin_ws/src/teleop_twist_joy/include/**",
+        "/home/nickbender/catkin_ws/src/tf2_web_republisher/include/**",
+        "/home/nickbender/catkin_ws/src/zwave_energy/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

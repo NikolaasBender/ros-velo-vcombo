@@ -1,0 +1,24 @@
+<launch>
+
+    <node pkg="rosbag" type="play" name="player" output="screen" args="/home/nick/catkin_ws/smartbases/ft_carson_data/2020_11_06/20201106_214020_2.bag"/>
+
+    <node pkg="tf"
+        type="static_transform_publisher"
+        name="link1_broadcaster"
+        args="0 0 0 0 0 0 map vehicle 100" />
+
+    <node pkg="tf2_ros"
+        type="static_transform_publisher"
+        name="l_v_broadcaster"
+        args="0 0 0 0 0 0 1 vehicle VelodyneFrontLeft" />
+    
+    <node pkg="tf2_ros"
+        type="static_transform_publisher"
+        name="r_v_broadcaster"
+        args="1.6955 0 0 0 0 0 1 vehicle VelodyneFrontRight" />
+
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find velo_combo)/launch/combo_viz.rviz"/>
+
+    <node pkg="velo_combo" name="combiner" type="combiner"/>
+
+</launch>
