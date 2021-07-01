@@ -1,0 +1,23 @@
+<launch>
+
+    <node pkg="rosbag" type="play" name="player" output="screen" args="/home/nick/catkin_ws/smartbases/ft_carson_data/20201117_185358_2.bag"/>
+
+    <node pkg="tf"
+        type="static_transform_publisher"
+        name="link1_broadcaster"
+        args="0 0 0 0 0 0 map vehicle 100" />
+
+    <param name="top_edge" type="double" value="4.0" />
+    <param name="bottom_edge" type="double" value="-1.0" />
+    <param name="left_edge" type="double" value="-4.0" />
+    <param name="right_edge" type="double" value="4.0" />
+    <param name="danger_distance" type="double" value="5.0" />
+    <param name="minimum_distance" type="double" value="0.22" />
+    <param name="cloud_topic" type="string" value="/VelodyneFrontLeft" />
+    <param name="lidar_name" type="string" value="left" />
+   
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find velo_combo)/launch/danger_viz.rviz"/>
+
+    <node pkg="velo_combo" name="dangers" type="dangers" output="screen"/>
+
+</launch>

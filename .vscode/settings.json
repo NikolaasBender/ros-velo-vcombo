@@ -67,7 +67,9 @@
         "cfenv": "cpp",
         "cinttypes": "cpp",
         "typeindex": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "variant": "cpp",
+        "bit": "cpp"
     },
     "python.analysis.extraPaths": [
         "/home/nickbender/catkin_ws/devel/lib/python2.7/dist-packages",

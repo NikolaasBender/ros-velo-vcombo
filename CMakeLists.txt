@@ -2,21 +2,27 @@ cmake_minimum_required(VERSION 2.8.3)
 project(velo_combo)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++14 -o3)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  pcl_conversions 
-  pcl_ros 
   roscpp 
   sensor_msgs
+  pcl_ros
+  pcl_conversions
 )
 
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Eigen3 REQUIRED COMPONENTS system)
+
+catkin_package(
+  INCLUDE_DIRS include
+)
+
+include_directories(${catkin_INCLUDE_DIRS})
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -210,8 +216,15 @@ include_directories(
 
 # link_directories(/usr/local/include)
 
-add_executable(combiner src/combination.cpp)
-target_link_libraries(combiner ${catkin_LIBRARIES})
 
-add_executable(combo_online src/combo_online.cpp)
-target_link_libraries(combo_online ${catkin_LIBRARIES})
+add_executable(combiner src/combination.cpp)
+target_link_libraries(combiner ${catkin_LIBRARIES} ${roslib_LIBRARIES}
+  ${PCL_LIBRARIES})
+
+# add_executable(combo_online src/combo_online.cpp)
+# target_link_libraries(combo_online ${catkin_LIBRARIES} ${roslib_LIBRARIES}
+#   ${PCL_LIBRARIES})
+
+add_executable(dangers src/colision_detector.cpp)
+target_link_libraries(dangers ${catkin_LIBRARIES} ${roslib_LIBRARIES}
+  ${PCL_LIBRARIES})

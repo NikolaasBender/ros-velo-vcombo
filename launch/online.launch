@@ -5,14 +5,19 @@
     <node pkg="tf"
         type="static_transform_publisher"
         name="link1_broadcaster"
-        args="0 0 0 0 0 0 map VelodyneFrontLeft 100" />
+        args="0 0 0 0 0 0 map vehicle 100" />
 
+    <param name="tollerance" type="double" value="0.003" />
+    <!-- done in radians || 0.261799 is rad of 15 deg-->
+    <param name="cone" type="double" value="0.261799" />
+
+    <param name="normals_icp" type="bool" value="false"/>
 
     <node type="rviz" name="rviz" pkg="rviz" args="-d $(find velo_combo)/launch/combo_viz.rviz"/>
 
-    <node pkg="velo_combo" name="combo_online" type="combo_online"/>
+    <node pkg="velo_combo" name="combo_online" type="combo_online" output="screen"/>
 
-    <node pkg="rosbag" type="record" name="recorder" output="screen"/>
+    <!-- <node pkg="rosbag" type="record" name="recorder" output="screen"/> -->
 
 
 </launch>
