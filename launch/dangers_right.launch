@@ -13,12 +13,12 @@
     <param name="right_edge" type="double" value="4.0" />
     <param name="danger_distance" type="double" value="100.0" />
     <param name="minimum_distance" type="double" value="0.22" />
-    <param name="cloud_topic" type="string" value="/VelodyneFrontLeft" />
-    <param name="lidar_name" type="string" value="left" />
-    <param name="file_name" type="string" value="/home/nick/dangers.csv"/>
+    <param name="cloud_topic" type="string" value="/VelodyneFrontRight" />
+    <param name="lidar_name" type="string" value="right" />
+    <param name="file_name" type="string" value="/home/nick/dangers_right.csv"/>
    
     <node type="rviz" name="rviz" pkg="rviz" args="-d $(find velo_combo)/launch/danger_viz.rviz"/>
 
-    <node pkg="velo_combo" name="dangers" type="dangers" output="screen"/>
+    <node pkg="velo_combo" name="dangers_right" type="dangers" output="screen"/>
 
 </launch>

@@ -18,6 +18,7 @@ typedef pcl::PointCloud<pcl::PointXYZRGB>::Ptr RGBPtrCloud;
 typedef pcl::PointCloud<pcl::PointNormal>::Ptr NormPtrCloud;
 
 double danger_dist, left_edge, right_edge, bottom_edge, top_edge, min_dist;
+std::string file_name;
 
 boost::shared_ptr<sensor_msgs::PointCloud2> ros_cloud_in (new sensor_msgs::PointCloud2());
 
@@ -46,7 +47,7 @@ void slice_and_color(RGBPtrCloud source_cloud, RGBPtrCloud segmented_cloud, ros:
                     double dist = pcl::squaredEuclideanDistance(source_cloud->points[i], pcl::PointXYZ(0, 0, 0));
                     // write to csv
                     std::ofstream file;
-                    file.open("/home/nick/dangers.csv", std::ios::app);
+                    file.open(file_name, std::ios::app);
                     if(file.is_open()){
                         // std::cout << "file open" << std::endl;
                         file << std::to_string(timestamp.toSec()) << ",";
@@ -80,9 +81,17 @@ int main(int argc, char** argv){
     nh.getParam("cloud_topic", pc_topic);
     nh.getParam("lidar_name", lidar_name);
     nh.getParam("minimum_distance", min_dist);
+    nh.getParam("file_name", file_name);
 
-
-    // TODO: load transform from file
+    std::ofstream file;
+    file.open(file_name);
+    if(file.is_open()){
+        // std::cout << "file open" << std::endl;
+        file << "time_stamp, x, y, z, range\n";
+        file.close();
+    }else{
+        std::cout << "file not open" << std::endl;
+    }
 
     // unified publisher
     ros::Publisher color_publisher = nh.advertise<sensor_msgs::PointCloud2>(lidar_name + "_pc_colored", 1);

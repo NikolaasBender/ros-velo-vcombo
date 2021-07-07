@@ -229,15 +229,15 @@ int main(int argc, char** argv){
             PtrCloud r_pcT (new pcl::PointCloud<pcl::PointXYZ>());
             // Transform right cloud to left
             // pcl::transformPointCloud(*l_pc, *r_pc, l_r_transform);
-            pcl::transformPointCloud(*r_seg, *r_pcT, l_r_transform);
+            pcl::transformPointCloud(*r_pc, *r_pcT, l_r_transform);
             // check alignment of the pointclouds
-            if(closeness(l_seg, r_pcT) > closeness_tol){
+            if(closeness(l_pc, r_pcT) > closeness_tol){
                 std::cout << "alignment changed" << std::endl;
 
                 if(!normals_icp){
-                    normal_icp(l_seg, r_pcT);
+                    normal_icp(l_pc, r_pcT);
                 }else{
-                    normal_normal_icp(l_seg, r_pcT);
+                    normal_normal_icp(l_pc, r_pcT);
                 }                
 
                 // TODO: save transform to file
